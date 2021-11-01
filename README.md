@@ -10,7 +10,7 @@ Mobiles | Tablette | Bureau
 
 Pour installer l'application :
 
-- Télécharger le fichier .zip du projet GitHub via ce lien [Poch'Lib]()
+- Télécharger le fichier .zip du projet GitHub via ce lien [Poch'Lib](https://github.com/frederic8/Poch-LIB)
 - Dans le sous-menu cliquez sur le bouton VERT "Code"
 - L'extraire dans votre répertoire
 
