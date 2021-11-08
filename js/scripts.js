@@ -344,3 +344,38 @@ function addIconTrashAction(idItem, parentElt) {
   });
 }
 
+// Fonction qui affiche un message d'erreur si l'utilisateur essaye d'ajouter 2fois le meme livre dans la PochList
+function isInSession(idItem) {
+  if (sessionStorage.getItem(idItem) !== null) {
+    alert(notAddSameBookMsg);
+    return true;
+  }
+  return false;
+}
+
+// Fonction pour sauvegarder les livres et ajouter l'icon Trash pour supprimer un element de la PochList
+function saveBook(book, idItem) {
+  const parentDiv = document.getElementById("pochlist-grid");
+  // Si l' idItem n'est pas enregistrer dans le sessionStorage
+  if (!isInSession(idItem)) {
+    // Convertir l'objet JavaScript en une chaîne avec JSON.stringify() et envoyer les donnees dans le sessionStorage
+    sessionStorage.setItem(book.idItem, JSON.stringify(book));
+    book.createBookPresentation(parentDiv);
+    // Appel de la function icons et ajout de l'icon Trash
+    toggleIcons();
+    addIconTrashAction(idItem, parentDiv);
+  }
+}
+
+// Function pour supprimer les livres du sessionStorage
+function removeBook(idItem) {
+  const targetElt = document.querySelectorAll("#pochlist-grid > section");
+  targetElt.forEach((element) => {
+    const targetId = element.querySelector(".result__info > div");
+    if (targetId.innerHTML === idItem) {
+      element.parentNode.removeChild(element);
+      sessionStorage.removeItem(idItem);
+    }
+  });
+}
+
