@@ -450,3 +450,75 @@ function displayPochlist() {
   toggleIcons();
 }
 
+// L’API de Google Books est utilisée pour rechercher les livres correspondant aux données saisies dans le formulaire.
+function searchBook() {
+  const resultsContainer = document.getElementById("res-output");
+  const listOutput = document.getElementById("list-grid");
+  const message = document.getElementById("no-results-msg");
+  const url = setBookURL();
+  // Tant que la liste de résultat de recherche est inférieur a 0
+  while (listOutput.childNodes.length > 0) {
+    cleanOutputList(listOutput);
+  }
+  // XMLHttpRequest permet d'interagir avec API Google Book
+  if (url) {
+    // Créer un objet XMLHttpRequest
+    let request = new XMLHttpRequest();
+    // configurer la requête et appeler la méthode
+    request.open("GET", url);
+    // Envoie la requête au serveur
+    request.send();
+    // Implémenter l'événement "readystatechange" pour détecter les événements
+    request.onreadystatechange = function () {
+      // Si l'operation est terminée && la requête réussie
+      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        // Utilisez la fonction JavaScript JSON.parse()pour convertir les donnees textes en objet JavaScript
+        let jsonData = JSON.parse(this.responseText);
+        // Si les donnees textes de tous les items sont strictement égale a 0
+        if (jsonData.totalItems === 0) {
+          // Affiche les div resultsContainer & message
+          resultsContainer.style.display = "block";
+          message.style.display = "block";
+          // Sinon
+        } else {
+          // Affiche les donnes de résultats de recherche dans le container & masque le message
+          displayResults(jsonData, listOutput);
+          message.style.display = "none";
+          resultsContainer.style.display = "block";
+        }
+        // Sinon si la requête n'est pas réussie
+      } else if (this.status !== 200) {
+        //  Afficher le message d'erreur et le status
+        console.error(
+          `Network request failed. Returned status of ${this.status}`
+        );
+      }
+    };
+  }
+}
+
+// Function pour supprimer les résultats de recherche
+function cleanOutputList(parentElement) {
+  while (parentElement.lastChild) {
+    parentElement.removeChild(parentElement.lastChild);
+  }
+}
+
+// Function pour annuler la recherche et appeler la function qui supprime les résultats de recherche
+function cancelSearch(form) {
+  const parentElement = document.getElementById("list-grid");
+  const btn = document.getElementById("addBook");
+  const resContainer = document.getElementById("res-output");
+  const inputs = form.querySelectorAll("input");
+  if (parentElement) {
+    cleanOutputList(parentElement);
+  }
+  form.style.display = "none";
+  btn.style.display = "block";
+  resContainer.style.display = "none";
+  for (const input of inputs) {
+    if (input) {
+      input.value = "";
+    }
+  }
+}
