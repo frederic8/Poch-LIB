@@ -240,3 +240,28 @@ function createWarningMessage(msgId, msg) {
   return message;
 }
 
+// Créer une function qui créer le "result container"
+function createResultsContainer() {
+  const resultsContainer = functionDiv("res-container");
+  resultsContainer.id = "res-output";
+  resultsContainer.style.display = "none";
+  const resultsLine = functionHr();
+  const resultsTitle = functionH2();
+  resultsTitle.innerHTML = "Résultats de recherche";
+  const warningMsg = createWarningMessage("no-results-msg", noResultMsg);
+  const resultsGrid = functionDiv("res-grid");
+  resultsGrid.id = "list-grid";
+  resultsContainer.appendChild(resultsLine);
+  resultsContainer.appendChild(resultsTitle);
+  resultsContainer.appendChild(warningMsg);
+  resultsContainer.appendChild(resultsGrid);
+  insertElement(resultsContainer);
+}
+
+// Créer une function qui créer la "PochList container"
+function createPochlistContainer() {
+  const pochlistContainer = document.getElementById("content");
+  const pochlistGrid = functionDiv("res-grid");
+  pochlistGrid.id = "pochlist-grid";
+  pochlistContainer.appendChild(pochlistGrid);
+}
