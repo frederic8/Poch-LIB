@@ -139,3 +139,10 @@ class Book {
   }
 }
 
+// Insert la presentations des livres dans la div myBook avant le hr
+function insertElement(element) {
+  const parentDiv = document.getElementById("myBooks");
+  const target = document.getElementsByTagName("hr")[0];
+  parentDiv.insertBefore(element, target);
+}
+
