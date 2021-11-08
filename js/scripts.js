@@ -82,3 +82,9 @@ const functionH2 = () => {
   return h2;
 };
 
+// variables messages d'erreurs
+const noResultMsg = "Aucun livre n'a été trouvé.";
+const emptyFieldsMsg = "Merci de remplir au moins un des champs proposés.";
+const missInfoMsg = "Information manquante";
+const notAddSameBookMsg = "Vous ne pouvez ajouter deux fois le même livre !";
+
