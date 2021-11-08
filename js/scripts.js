@@ -278,3 +278,37 @@ function onload() {
 // Écoute les événements de la fenêtre et appel la fonction "onload"
 window.addEventListener("load", onload);
 
+// Function pour aller chercher les donnes des livres rechercher dans l'api google books
+function setBookURL() {
+  let bookURL = "https://www.googleapis.com/books/v1/volumes?q=";
+  // Affiche les elements trouver dans le container de résultat
+  const resultsContainer = document.getElementById("res-output");
+  // Affiche un message d'erreur si le champ n'est pas remplis
+  const message = document.getElementById("empty-fields-msg");
+  if (message.style.display === "block") {
+    message.style.display = "none";
+  }
+  const form = document.forms[0];
+  const formData = new FormData(form);
+  const urlParams = new URLSearchParams(formData);
+  let queryString = urlParams.toString();
+  const intitle = urlParams.get("intitle");
+  const inauthor = urlParams.get("inauthor");
+  if (intitle === "" && inauthor === "") {
+    message.style.display = "block";
+    document.getElementById("book-title").focus();
+    resultsContainer.style.display = "none";
+    return null;
+  }
+  if (intitle === "") {
+    queryString = queryString.replace("intitle=&inauthor", "inauthor");
+  }
+  if (inauthor === "") {
+    queryString = queryString.replace("&inauthor=", "");
+  }
+  queryString = queryString.replace("&", "+");
+  queryString = queryString.replace(/=/g, ":");
+  bookURL += queryString;
+  return bookURL;
+}
+
