@@ -379,3 +379,74 @@ function removeBook(idItem) {
   });
 }
 
+// Affiche les donnees du résultat des livres dans une liste
+function displayResults(data, list) {
+  let item;
+  let title;
+  let id;
+  let idHidden;
+  let author;
+  let description;
+  let image;
+  let books = [];
+  let index = 0;
+  for (item of data.items) {
+    id = null;
+    title = item.volumeInfo.title;
+    idHidden = item.id;
+    if (item.volumeInfo.industryIdentifiers) {
+      for (let i = 0; i < item.volumeInfo.industryIdentifiers.length; i++) {
+        if (item.volumeInfo.industryIdentifiers[i].type === "ISBN_13") {
+          id = item.volumeInfo.industryIdentifiers[i].identifier;
+        }
+      }
+      if (!id) {
+        id = item.volumeInfo.industryIdentifiers[0].identifier;
+      }
+    } else {
+      id = missInfoMsg;
+    }
+    //
+    author = item.volumeInfo.authors ? item.volumeInfo.authors[0] : missInfoMsg;
+    if (item.volumeInfo.description) {
+      description = item.volumeInfo.description;
+      if (description.length > 200) {
+        description = description.slice(0, 200);
+        description = description.substring(0, description.lastIndexOf(" "));
+        if (!description.endsWith(".")) {
+          description += "...";
+        }
+      }
+    } else {
+      description = missInfoMsg;
+    }
+    image = item.volumeInfo.imageLinks
+      ? item.volumeInfo.imageLinks.thumbnail
+      : "images/unavailable.png";
+    books[index] = new Book(title, id, idHidden, author, description, image);
+    books[index].createBookPresentation(list);
+    index++;
+  }
+  addIconBookmarkAction(books);
+}
+
+//
+function displayPochlist() {
+  const parentDiv = document.getElementById("pochlist-grid");
+  const keys = Object.keys(sessionStorage);
+  for (const key of keys) {
+    const sessionObject = JSON.parse(sessionStorage.getItem(key));
+    const book = new Book(
+      sessionObject.title,
+      sessionObject.idISBN,
+      sessionObject.idItem,
+      sessionObject.author,
+      sessionObject.description,
+      sessionObject.image
+    );
+    book.createBookPresentation(parentDiv);
+    addIconTrashAction(sessionObject.idItem, parentDiv);
+  }
+  toggleIcons();
+}
+
