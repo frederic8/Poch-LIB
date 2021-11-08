@@ -146,3 +146,67 @@ function insertElement(element) {
   parentDiv.insertBefore(element, target);
 }
 
+// Creation de la div qui contiendra le formulaire
+function createField(label, input) {
+  const field = functionDiv("form__field");
+  field.appendChild(label);
+  field.appendChild(input);
+  return field;
+}
+
+// creation du formulaire qui apparaît lorsqu'on click sur le bouton "ajouter un livre"
+function createForm() {
+  const form = functionForm();
+  form.classList.add("form");
+
+  const labelTitle = functionLabel();
+  const labelTitleTxt = document.createTextNode("Titre du livre");
+  labelTitle.setAttribute("for", "intitle");
+  labelTitle.appendChild(labelTitleTxt);
+
+  const title = functionInput();
+  title.setAttribute("type", "text");
+  title.setAttribute("name", "intitle");
+  title.setAttribute("id", "book-title");
+
+  const labelAuthor = functionLabel();
+  const labelAuthorTxt = document.createTextNode("Auteur");
+  labelAuthor.setAttribute("for", "inauthor");
+  labelAuthor.appendChild(labelAuthorTxt);
+
+  const author = functionInput();
+  author.setAttribute("type", "text");
+  author.setAttribute("name", "inauthor");
+  author.setAttribute("id", "author");
+
+  const message = createWarningMessage("empty-fields-msg", emptyFieldsMsg);
+
+  const searchBtn = functionButton();
+  searchBtn.innerHTML = "Rechercher";
+  searchBtn.classList.add("btn");
+  searchBtn.onclick = (event) => {
+    event.preventDefault();
+    searchBook();
+    title.value = "";
+    title.focus();
+    author.value = "";
+  };
+
+  const cancelBtn = functionButton();
+  cancelBtn.innerHTML = "Annuler";
+  cancelBtn.classList.add("btn", "btn--cancel");
+  cancelBtn.onclick = (event) => {
+    event.preventDefault();
+    cancelSearch(form);
+    message.style.display = "none";
+  };
+
+  form.appendChild(createField(labelTitle, title));
+  form.appendChild(createField(labelAuthor, author));
+  form.appendChild(message);
+  form.appendChild(searchBtn);
+  form.appendChild(cancelBtn);
+  insertElement(form);
+  form.style.display = "none";
+}
+
