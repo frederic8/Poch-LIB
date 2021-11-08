@@ -312,3 +312,35 @@ function setBookURL() {
   return bookURL;
 }
 
+// Créer une fonction pour la bascule des icons
+function toggleIcons() {
+  const icons = document.querySelectorAll("#pochlist-grid i");
+  for (const icon of icons) {
+    if (icon.className === "fas fa-bookmark" && icon.style.display !== "none") {
+      icon.style.display = "none";
+    }
+    if (icon.className === "fas fa-trash" && icon.style.display === "none") {
+      icon.style.display = "block";
+    }
+  }
+}
+
+// Ajoute l'icône pour sauvegarder le livre dans la Pochlist
+function addIconBookmarkAction(books) {
+  for (let i = 0; i < books.length; i++) {
+    const iconBookmark = document.getElementsByClassName("fa-bookmark")[i];
+    iconBookmark.onclick = () => {
+      saveBook(books[i], books[i].idItem);
+    };
+  }
+}
+
+// Ajoute l'icône pour supprimer le livre dans la Pochlist
+function addIconTrashAction(idItem, parentElt) {
+  const section = parentElt.lastChild;
+  const iconTrash = section.getElementsByTagName("i")[1];
+  iconTrash.addEventListener("click", () => {
+    removeBook(idItem);
+  });
+}
+
