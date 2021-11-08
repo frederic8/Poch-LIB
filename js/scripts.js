@@ -192,6 +192,7 @@ function createForm() {
     author.value = "";
   };
 
+  // Créer Function "cancelButton"
   const cancelBtn = functionButton();
   cancelBtn.innerHTML = "Annuler";
   cancelBtn.classList.add("btn", "btn--cancel");
@@ -201,6 +202,7 @@ function createForm() {
     message.style.display = "none";
   };
 
+  //Insert element "form"
   form.appendChild(createField(labelTitle, title));
   form.appendChild(createField(labelAuthor, author));
   form.appendChild(message);
@@ -210,6 +212,7 @@ function createForm() {
   form.style.display = "none";
 }
 
+// Créer function "displayForm"
 function displayForm() {
   const btn = document.getElementById("addBook");
   const form = document.getElementsByClassName("form")[0];
@@ -430,7 +433,7 @@ function displayResults(data, list) {
   addIconBookmarkAction(books);
 }
 
-//
+// Function "displayPochList"
 function displayPochlist() {
   const parentDiv = document.getElementById("pochlist-grid");
   const keys = Object.keys(sessionStorage);
