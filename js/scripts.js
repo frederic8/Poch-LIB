@@ -88,3 +88,54 @@ const emptyFieldsMsg = "Merci de remplir au moins un des champs proposés.";
 const missInfoMsg = "Information manquante";
 const notAddSameBookMsg = "Vous ne pouvez ajouter deux fois le même livre !";
 
+// creation class "Book"
+class Book {
+  constructor(title, idISBN, idItem, author, description, image) {
+    this.title = title;
+    this.idISBN = idISBN;
+    this.idItem = idItem;
+    this.author = author;
+    this.description = description;
+    this.image = image;
+  }
+
+  // Presentation des livres
+  createBookPresentation(parentElement) {
+    let section = functionSection();
+    const bookInfo = functionDiv("result__info");
+    const imgWrapper = functionDiv("result__img");
+    const iconBookmark = functionSave();
+    const iconTrash = functionTrash();
+    iconTrash.style.display = "none";
+    const titleElement = functionH3("result__info--title");
+    const idElement = functionH3();
+    const idHiddenElement = functionDiv();
+    idHiddenElement.style.display = "none";
+    const authorElement = functionP();
+    const descriptionElement = functionP();
+    const imageElement = functionImg();
+    imageElement.src = this.image;
+    titleElement.innerHTML = `Titre : ${this.title}`;
+    idElement.innerHTML = `Id : ${this.idISBN}`;
+    idHiddenElement.innerHTML = this.idItem;
+    authorElement.innerHTML = `Auteur : ${this.author}`;
+    descriptionElement.innerHTML = `Description : ${this.description}`;
+    const bookInfoChildren = [
+      iconBookmark,
+      iconTrash,
+      titleElement,
+      idElement,
+      idHiddenElement,
+      authorElement,
+      descriptionElement,
+    ];
+    for (const child of bookInfoChildren) {
+      bookInfo.appendChild(child);
+    }
+    imgWrapper.appendChild(imageElement);
+    section.appendChild(bookInfo);
+    section.appendChild(imgWrapper);
+    parentElement.appendChild(section);
+  }
+}
+
