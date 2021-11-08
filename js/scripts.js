@@ -210,3 +210,33 @@ function createForm() {
   form.style.display = "none";
 }
 
+function displayForm() {
+  const btn = document.getElementById("addBook");
+  const form = document.getElementsByClassName("form")[0];
+  const title = document.getElementById("book-title");
+  if (btn !== null && form !== null) {
+    btn.style.display = "none";
+    form.style.display = "block";
+    title.focus();
+  }
+}
+
+// Function addButton pour ajouter un livre
+function addButton() {
+  const addBookBtn = functionButton();
+  addBookBtn.innerHTML = "Ajouter un livre";
+  addBookBtn.classList.add("btn", "btn--center");
+  addBookBtn.id = "addBook";
+  insertElement(addBookBtn);
+  addBookBtn.onclick = displayForm;
+}
+
+// Function "WarningMessage" affiche le warning-message lorsque la function est appelée
+function createWarningMessage(msgId, msg) {
+  const message = functionDiv("warning-msg");
+  message.id = msgId;
+  message.innerHTML = msg;
+  message.style.display = "none";
+  return message;
+}
+
