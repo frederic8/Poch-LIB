@@ -265,3 +265,16 @@ function createPochlistContainer() {
   pochlistGrid.id = "pochlist-grid";
   pochlistContainer.appendChild(pochlistGrid);
 }
+
+// créer un function "onload" qui appel les functions qu'elle contient
+function onload() {
+  createForm();
+  addButton();
+  createResultsContainer();
+  createPochlistContainer();
+  displayPochlist();
+}
+
+// Écoute les événements de la fenêtre et appel la fonction "onload"
+window.addEventListener("load", onload);
+
