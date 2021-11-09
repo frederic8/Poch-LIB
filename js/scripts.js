@@ -281,12 +281,13 @@ function onload() {
 // Écoute les événements de la fenêtre et appel la fonction "onload"
 window.addEventListener("load", onload);
 
-// Function pour aller chercher les donnes des livres rechercher dans l'api google books
+// Function pour définir l'URL du livre
 function setBookURL() {
+  // Lien API Google Books
   let bookURL = "https://www.googleapis.com/books/v1/volumes?q=";
-  // Affiche les elements trouver dans le container de résultat
+  // Container de résultat
   const resultsContainer = document.getElementById("res-output");
-  // Affiche un message d'erreur si le champ n'est pas remplis
+  // Message d'erreur si le champ n'est pas remplis
   const message = document.getElementById("empty-fields-msg");
   if (message.style.display === "block") {
     message.style.display = "none";
@@ -382,7 +383,7 @@ function removeBook(idItem) {
   });
 }
 
-// Affiche les donnees du résultat des livres dans une liste
+// Function pour afficher le résultat de sauvegarde dans la Pochlist
 function displayResults(data, list) {
   let item;
   let title;
@@ -433,7 +434,7 @@ function displayResults(data, list) {
   addIconBookmarkAction(books);
 }
 
-// Function "displayPochList"
+// Function pour afficher la Poch'List
 function displayPochlist() {
   const parentDiv = document.getElementById("pochlist-grid");
   const keys = Object.keys(sessionStorage);
