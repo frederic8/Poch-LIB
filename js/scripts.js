@@ -383,7 +383,7 @@ function removeBook(idItem) {
   });
 }
 
-// Function pour afficher le résultat de sauvegarde dans la Pochlist
+// Function pour afficher le résultat de recherche
 function displayResults(data, list) {
   let item;
   let title;
