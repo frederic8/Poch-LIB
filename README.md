@@ -27,6 +27,6 @@ Une fois la page Web affichée dans votre navigateur :
 - Les résultats de recherche vont apparaître au-dessous du formulaire
 - Les résultats comprennent des livres correspondant aux critères de recherche saisis
 - Utilisez le bouton **`Annuler`** si vous souhaitez supprimer les résultats de votre recherche et revenir à l'étape initiale
-- Pour ajouter le livre dans votre liste des livres à lire "POCH'LIST", cliquez sur l'icône **`bookmark`**
-- Pour supprimer un livre de votre "POCH'LIST" cliquez sur l'icône de **`corbeille`**
-- Les livres ajoutées dans la "POCH'LIST" sont disponibles pendant la durée de la session de votre navigateur
+- Pour ajouter le livre dans votre liste des livres à lire "POCH'LISTE", cliquez sur l'icône **`bookmark`**
+- Pour supprimer un livre de votre "POCH'LISTE" cliquez sur l'icône de **`corbeille`**
+- Les livres ajoutées dans la "POCH'LISTE" sont disponibles pendant la durée de la session de votre navigateur

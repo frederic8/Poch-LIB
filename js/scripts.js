@@ -281,7 +281,7 @@ function onload() {
 // Écoute les événements de la fenêtre et appel la fonction "onload"
 window.addEventListener("load", onload);
 
-// Function pour définir l'URL du livre
+// Function qui construit l'URL
 function setBookURL() {
   // Lien API Google Books
   let bookURL = "https://www.googleapis.com/books/v1/volumes?q=";
@@ -410,22 +410,28 @@ function displayResults(data, list) {
     } else {
       id = missInfoMsg;
     }
-    //
+    // Message "information manquante"
     author = item.volumeInfo.authors ? item.volumeInfo.authors[0] : missInfoMsg;
     if (item.volumeInfo.description) {
       description = item.volumeInfo.description;
+      // Si la description et supérieur a 200 caractère
       if (description.length > 200) {
+        // Afficher uniquement les 200 premiers caractère
         description = description.slice(0, 200);
         description = description.substring(0, description.lastIndexOf(" "));
+        // Si la description ne se finit pas avec un "."
         if (!description.endsWith(".")) {
+          // Ajouter "..."
           description += "...";
         }
       }
+      // Sinon affiche le message "information manquante" dans la description
     } else {
       description = missInfoMsg;
     }
     image = item.volumeInfo.imageLinks
-      ? item.volumeInfo.imageLinks.thumbnail
+      ? // Si le livre n'a pas d'image afficher le fichier image "unavailable.png"
+        item.volumeInfo.imageLinks.thumbnail
       : "images/unavailable.png";
     books[index] = new Book(title, id, idHidden, author, description, image);
     books[index].createBookPresentation(list);
