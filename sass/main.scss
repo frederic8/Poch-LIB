@@ -1,12 +1,13 @@
-// Responsive 
 * {
   font-family: "Noto Sans KR", sans-serif;
 }
+// Responsive : Styles spécifiques pour les écrans de taille moyenne type tablette
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   * {
     font-size: 120%;
   }
 }
+// Responsive : Styles spécifiques pour les grands écrans type écrans d'ordinateur
 @media screen and (min-width: 1200px) {
   * {
     font-size: 133.33%;
@@ -34,12 +35,13 @@ body > div {
   padding: 15px;
   overflow: scroll;
 }
-// Responsive 
+// Responsive : Styles spécifiques pour les écrans de taille moyenne type tablette
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   body > div {
     width: 80%;
   }
 }
+// Responsive : Styles spécifiques pour les grands écrans type écrans d'ordinateur
 @media screen and (min-width: 1200px) {
   body > div {
     width: 70%;
@@ -49,7 +51,7 @@ body > div {
 .logo {
   display: none;
 }
-// Responsive 
+// Responsive : Styles spécifiques pour les écrans de taille moyenne type tablette
 @media screen and (min-width: 768px) {
   .logo {
     height: auto;
@@ -72,7 +74,7 @@ body > div {
   -webkit-box-shadow: 1.5px 1.5px 3px #cccccc;
   box-shadow: 1.5px 1.5px 3px #cccccc;
 }
-// Responsive 
+// Responsive : Styles spécifiques pour les écrans de taille moyenne type tablette
 @media screen and (min-width: 768px) {
   .title {
     margin-top: inherit;
@@ -99,12 +101,13 @@ h2 {
   display: block;
   cursor: pointer;
 }
-// Responsive 
+// Responsive : Styles spécifiques pour les écrans de taille moyenne type tablette
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .btn {
     max-width: 130px;
   }
 }
+// Responsive : Styles spécifiques pour les grands écrans type écrans d'ordinateur
 @media screen and (min-width: 1200px) {
   .btn {
     max-width: 150px;
@@ -131,7 +134,7 @@ h2 {
 hr {
   margin: 0;
 }
-
+//// Responsive : Ici, notre design principal correspond à la présentation qu'on souhaite avoir sur mobile
 .form {
   width: 100%;
   padding-top: 1.245rem;
@@ -155,12 +158,13 @@ hr {
   box-sizing: border-box;
   border: 0.075rem solid #666666;
 }
-// Responsive 
+// Responsive : Styles spécifiques pour les écrans de taille moyenne type tablette
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .form__field input {
     width: 75%;
   }
 }
+// Responsive : Styles spécifiques pour les grands écrans type écrans d'ordinateur
 @media screen and (min-width: 1200px) {
   .form__field input {
     width: 50%;
@@ -176,18 +180,20 @@ hr {
   font-size: 0.75rem;
   margin-bottom: 1.245rem;
 }
-
+// Responsive : Ici, notre design principal correspond à la présentation qu'on souhaite avoir sur mobile
 .res-grid {
   display: grid;
+  // Aligne les element box de la grid sur un seul colone
   grid-template-columns: 1fr;
   grid-column-gap: 15px;
 }
-// Responsive 
+// Responsive : Styles spécifiques pour les écrans de taille moyenne type tablette
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .res-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+// Responsive : Styles spécifiques pour les grands écrans type écrans d'ordinateur
 @media screen and (min-width: 1200px) {
   .res-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -204,7 +210,7 @@ hr {
 .fas:hover {
   color: #115a52;
 }
-
+// Responsive : Ici, notre design principal correspond à la présentation qu'on souhaite avoir sur mobile
 .result {
   background-color: #f2f2f2;
   padding: 7.5px;
@@ -220,12 +226,13 @@ hr {
   height: 350px;
   border: 0.075rem solid #cccccc;
 }
-// Responsive
+// Responsive : Styles spécifiques pour les écrans de taille moyenne type tablette
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .result {
     height: 470px;
   }
 }
+// Responsive : Styles spécifiques pour les grands écrans type écrans d'ordinateur
 @media screen and (min-width: 1200px) {
   .result {
     height: 500px;
