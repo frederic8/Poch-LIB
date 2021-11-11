@@ -466,7 +466,7 @@ function searchBook() {
   const listOutput = document.getElementById("list-grid");
   const message = document.getElementById("no-results-msg");
   const url = setBookURL();
-  // Tant que la liste de résultat de recherche est inférieur a 0
+  // Tant que la liste de résultat de recherche est superieur a 0
   while (listOutput.childNodes.length > 0) {
     cleanOutputList(listOutput);
   }
